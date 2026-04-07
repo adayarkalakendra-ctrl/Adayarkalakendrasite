@@ -1,0 +1,370 @@
+:root {
+  --bg-parchment: #fdfaf4;
+  --bg-darker: #f8f4ea;
+  --maroon: #800000;
+  --maroon-dark: #4a0000;
+  --maroon-light: #9c2e2e;
+  --gold: #d4af37;
+  --gold-dark: #aa862c;
+  --gold-tan: #c9b38f;
+  --text-dark: #3a2e28;
+  --text-light: #fdfaf4;
+  --shadow-subtle: rgba(74, 0, 0, 0.05);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html {
+  background-color: #e6dac3; /* Warm darker background to contrast with main page */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-parchment);
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20c0-11.046 8.954-20 20-20v2c-9.941 0-18 8.059-18 18h-2zm-2 0C18 8.954 9.046 0-1 0v2c9.941 0 18 8.059 18 18h2zm0 2c0 11.046-8.954 20-20 20v-2c9.941 0 18-8.059 18-18h2zm2 0c0 11.046 8.954 20 20 20v-2c-9.941 0-18-8.059-18-18h-2z' fill='%23d4af37' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
+  color: var(--text-dark);
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 1300px;
+  margin: 0 auto;
+  border-left: 20px solid var(--maroon-dark);
+  border-right: 20px solid var(--maroon-dark);
+  box-shadow: 0 0 30px rgba(44, 30, 22, 0.2);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Cinzel', serif;
+  color: var(--maroon-dark);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.sloka-sanskrit,
+.sloka-text {
+  font-family: 'Rozha One', serif;
+}
+
+/* Header */
+.main-header {
+  background: linear-gradient(rgba(253, 250, 244, 0.2), rgba(253, 250, 244, 0.2)), url('assets/bg.jpeg') center/cover no-repeat;
+  background-color: var(--bg-parchment);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.5rem;
+  border-bottom: 2px solid var(--gold-tan);
+}
+
+.logo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 0;
+}
+
+.nataraja-logo {
+  height: 120px;
+  /* Big logo */
+  width: auto;
+}
+
+.title-logo {
+  height: 100px;
+  /* Bigger and prominent */
+  width: auto;
+}
+
+.top-nav {
+  width: 90%;
+  max-width: 1000px;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--gold-tan);
+  border-bottom: 1px solid var(--gold-tan);
+  margin-bottom: 0;
+}
+
+.top-nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 3.5rem;
+}
+
+.top-nav a {
+  text-decoration: none;
+  color: var(--maroon-dark);
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: color 0.3s ease;
+}
+
+.top-nav a:hover {
+  color: var(--gold-dark);
+}
+
+.sloka-banner {
+  text-align: center;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.sloka-text {
+  font-size: 1.8rem;
+  color: var(--maroon);
+  letter-spacing: 0.05em;
+  text-shadow: 1px 1px 2px rgba(253, 250, 244, 0.8);
+}
+
+/* Layouts */
+.container {
+  max-width: 1000px;
+  /* tighter max width for reading */
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Legacy Section */
+.legacy-section {
+  padding: 3rem 0;
+  background-color: var(--bg-darker);
+}
+
+.dual-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  text-align: center;
+}
+
+.legacy-text h2,
+.philosophy-text h2 {
+  font-size: 1.7rem;
+  margin-bottom: 1.5rem;
+  color: var(--maroon-dark);
+  text-transform: uppercase;
+}
+
+.legacy-text p,
+.philosophy-text p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #444;
+}
+
+.foundational-sloka {
+  margin-top: 2rem;
+  padding: 2rem 0;
+  border-top: 1px dashed var(--gold-tan);
+  border-bottom: 1px dashed var(--gold-tan);
+}
+
+.foundational-sloka h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--gold-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.sloka-sanskrit {
+  font-size: 1.6rem;
+  color: var(--maroon);
+  margin-bottom: 1rem;
+}
+
+.sloka-english {
+  font-style: italic;
+  color: var(--maroon-light);
+  font-size: 1rem;
+}
+
+/* Visionaries Section */
+.visionaries-section {
+  padding: 4rem 0;
+}
+
+.visionaries-section>.container>h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  color: var(--maroon-dark);
+}
+
+.intro-text {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  font-size: 1rem;
+  font-style: italic;
+  color: #555;
+}
+
+.founder-profiles {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.founder-image-wrapper {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.founder-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+.founder-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+.profile-card {
+  text-align: left;
+}
+
+.profile-card h3 {
+  font-size: 1.5rem;
+  color: var(--maroon);
+  margin-bottom: 0.5rem;
+}
+
+.profile-card h4 {
+  font-family: 'Inter', sans-serif;
+  color: var(--gold-dark);
+  font-weight: 500;
+  margin: 0.5rem 0 1rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.profile-card>p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.profile-card ul {
+  list-style-type: none;
+}
+
+.profile-card li {
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.profile-card li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--gold-dark);
+  font-size: 2rem;
+  line-height: 0.8;
+  top: 4px;
+}
+
+.profile-card li strong {
+  color: var(--maroon-dark);
+  font-weight: 600;
+}
+
+.philosophy-box {
+  margin-top: 3rem;
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 1px solid var(--gold-tan);
+}
+
+.philosophy-box h3 {
+  color: var(--maroon-dark);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+.philosophy-box p {
+  font-size: 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  font-style: italic;
+  color: #555;
+}
+
+/* Footer */
+.main-footer {
+  background-color: var(--bg-darker);
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid var(--gold-tan);
+}
+
+.lotus-icon {
+  margin-bottom: 1rem;
+}
+
+.lotus-svg {
+  width: 40px;
+  height: 40px;
+  color: var(--maroon-dark);
+}
+
+.contact-info {
+  font-size: 1.2rem;
+  font-family: 'Cinzel', serif;
+  margin-bottom: 1rem;
+  color: var(--maroon-dark);
+}
+
+.copyright {
+  font-size: 0.85rem;
+  color: #777;
+  padding-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .founder-details {
+    flex-direction: column;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .top-nav ul {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .nataraja-logo {
+    height: 120px;
+  }
+
+  .title-logo {
+    height: 80px;
+  }
+}
