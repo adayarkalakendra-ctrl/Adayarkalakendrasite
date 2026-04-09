@@ -23,16 +23,40 @@ html {
   background-color: #e6dac3; /* Warm darker background to contrast with main page */
 }
 
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+p {
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+section {
+  padding: 100px 0;
+}
+
+section:not(:last-child)::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--gold-tan);
+  margin: 60px auto 0;
+  opacity: 0.6;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bg-parchment);
-  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20c0-11.046 8.954-20 20-20v2c-9.941 0-18 8.059-18 18h-2zm-2 0C18 8.954 9.046 0-1 0v2c9.941 0 18 8.059 18 18h2zm0 2c0 11.046-8.954 20-20 20v-2c9.941 0 18-8.059 18-18h2zm2 0c0 11.046 8.954 20 20 20v-2c-9.941 0-18-8.059-18-18h-2z' fill='%23d4af37' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-image: none;
   color: var(--text-dark);
   line-height: 1.7;
   font-weight: 300;
   max-width: 1300px;
   margin: 0 auto;
-    box-shadow: 0 0 30px rgba(44, 30, 22, 0.2);
+    box-shadow: none;
 }
 
 @media (min-width: 1024px) {
@@ -47,15 +71,30 @@ h2,
 h3,
 h4 {
   font-family: 'Cinzel', serif;
-  color: var(--maroon-dark);
+  color: #2a2a2a;
   font-weight: 500;
   letter-spacing: 0.02em;
 }
+
+img {
+  border-radius: 6px;
+}
+
 
 .sloka-sanskrit,
 .sloka-text {
   font-family: 'Rozha One', serif;
 }
+
+a {
+  transition: opacity 0.3s ease;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+
 
 /* Header */
 .main-header {
@@ -65,7 +104,7 @@ h4 {
   flex-direction: column;
   align-items: center;
   padding-top: 0.5rem;
-  border-bottom: 2px solid var(--gold-tan);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
 .logo-area {
@@ -77,13 +116,13 @@ h4 {
 }
 
 .nataraja-logo {
-  height: 120px;
+  height: 90px;
   /* Big logo */
   width: auto;
 }
 
 .title-logo {
-  height: 100px;
+  height: 70px;
   /* Bigger and prominent */
   width: auto;
 }
@@ -126,10 +165,10 @@ h4 {
 }
 
 .sloka-text {
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   color: var(--maroon);
-  letter-spacing: 0.05em;
-  text-shadow: 1px 1px 2px rgba(253, 250, 244, 0.8);
+  letter-spacing: 0.1em;
+  
 }
 
 /* Layouts */
@@ -165,7 +204,7 @@ h4 {
 .philosophy-text p {
   margin-bottom: 1.25rem;
   font-size: 1.05rem;
-  max-width: 800px;
+  max-width: 680px;
   margin-left: auto;
   margin-right: auto;
   color: #444;
@@ -174,8 +213,8 @@ h4 {
 .foundational-sloka {
   margin-top: 2rem;
   padding: 2rem 0;
-  border-top: 1px dashed var(--gold-tan);
-  border-bottom: 1px dashed var(--gold-tan);
+  border:none;
+  text-align: center;
 }
 
 .foundational-sloka h3 {
@@ -187,14 +226,16 @@ h4 {
 }
 
 .sloka-sanskrit {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: var(--maroon);
   margin-bottom: 1rem;
+  letter-spacing: 1px;
 }
 
 .sloka-english {
   font-style: italic;
   color: var(--maroon-light);
+   opacity: 0.6;
   font-size: 1rem;
 }
 
@@ -237,7 +278,7 @@ h4 {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .founder-details {
@@ -248,6 +289,10 @@ h4 {
 }
 
 .profile-card {
+   padding: 24px;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 10px;
+  background: #fff;
   text-align: left;
 }
 
@@ -282,6 +327,7 @@ h4 {
   padding-left: 1.2rem;
   font-size: 0.9rem;
   color: #555;
+  line-height: 1.6;
 }
 
 .profile-card li::before {
@@ -289,9 +335,10 @@ h4 {
   position: absolute;
   left: 0;
   color: var(--gold-dark);
-  font-size: 2rem;
+  font-size: 1.2rem;
   line-height: 0.8;
-  top: 4px;
+  top: 2px;
+  opacity: 0.6;
 }
 
 .profile-card li strong {
@@ -323,10 +370,10 @@ h4 {
 
 /* Footer */
 .main-footer {
-  background-color: var(--bg-darker);
+  background-color: #f7f3eb;
   padding: 2rem;
   text-align: center;
-  border-top: 1px solid var(--gold-tan);
+  border-top: none;
 }
 
 .lotus-icon {
@@ -340,10 +387,11 @@ h4 {
 }
 
 .contact-info {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-family: 'Cinzel', serif;
   margin-bottom: 1rem;
   color: var(--maroon-dark);
+  opacity: 0.8;
 }
 
 .copyright {
