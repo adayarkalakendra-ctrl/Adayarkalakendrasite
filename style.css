@@ -9,7 +9,7 @@
   --gold-tan: #c9b38f;
   --text-dark: #3a2e28;
   --text-light: #fdfaf4;
-  --shadow-subtle: rgba(74, 0, 0, 0.05);
+  --shadow-subtle: 0 4px 15px rgba(74, 0, 0, 0.08);
 }
 
 * {
@@ -21,6 +21,7 @@
 
 html {
   background-color: #e6dac3; /* Warm darker background to contrast with main page */
+overflow-x: hidden;
 }
 
 .container {
@@ -29,34 +30,62 @@ html {
 }
 
 p {
-  line-height: 1.8;
+  line-height: 1.9;
   font-weight: 300;
+  color: #5a4a42;
 }
 
-section {
-  padding: 100px 0;
-}
 
-section:not(:last-child)::after {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 1px;
-  background: var(--gold-tan);
-  margin: 60px auto 0;
-  opacity: 0.6;
-}
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: var(--bg-parchment);
-  background-image: none;
+  background-color: #f5efe6;
   color: var(--text-dark);
   line-height: 1.7;
   font-weight: 300;
   max-width: 1300px;
   margin: 0 auto;
-    box-shadow: none;
+ box-shadow: 0 0 30px rgba(0,0,0,0.1); /* Adds depth to the main wrapper */
+  overflow-x: hidden;
+
+  /* ✨ Layered elegant texture */
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(212,175,55,0.08), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(212,175,55,0.06), transparent 40%),
+    url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4af37' fill-opacity='0.035'%3E%3Ccircle cx='60' cy='60' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+
+  background-repeat: no-repeat, no-repeat, repeat;
+  background-size: cover, cover, 120px;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  background-image: url('assets/mandala-light.png'); /* use a faint mandala */
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before {
+  top: -50px;
+  left: -100px;
+}
+
+body::after {
+  bottom: 0px;
+  right: -100px;
+  transform: rotate(180deg);
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
 @media (min-width: 1024px) {
@@ -66,18 +95,17 @@ body {
   }
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
   font-family: 'Cinzel', serif;
-  color: #2a2a2a;
+  color: var(--maroon-dark);
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 1px;
 }
 
 img {
-  border-radius: 6px;
+  border-radius: 8px;
+  max-width: 100%;
+  height: auto;
 }
 
 
@@ -94,46 +122,45 @@ a:hover {
   opacity: 0.7;
 }
 
+/* Base Animations */
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 /* Header */
 .main-header {
-  background: linear-gradient(rgba(253, 250, 244, 0.2), rgba(253, 250, 244, 0.2)), url('assets/bg.jpeg') center/cover no-repeat;
-  background-color: var(--bg-parchment);
+   background: transparent;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 0.5rem;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
 .logo-area {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
-  margin-bottom: 0;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-.nataraja-logo {
-  height: 90px;
-  /* Big logo */
-  width: auto;
-}
+.nataraja-logo { height: 90px; width: auto; }
 
-.title-logo {
-  height: 70px;
-  /* Bigger and prominent */
-  width: auto;
-}
+.title-logo { height: 70px; width: auto; }
 
 .top-nav {
   width: 90%;
   max-width: 1000px;
-  padding: 0.5rem 0;
+  padding: 1rem 0;
   border-top: 1px solid var(--gold-tan);
   border-bottom: 1px solid var(--gold-tan);
-  margin-bottom: 0;
+  margin-bottom: 1rem;
 }
 
 .top-nav ul {
@@ -141,14 +168,15 @@ a:hover {
   justify-content: center;
   list-style: none;
   gap: 3.5rem;
+  flex-wrap: wrap;
 }
 
 .top-nav a {
   text-decoration: none;
   color: var(--maroon-dark);
   font-family: 'Cinzel', serif;
-  font-weight: 600;
-  font-size: 1.05rem;
+  font-weight: 300;
+  font-size: .8rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   transition: color 0.3s ease;
@@ -156,16 +184,16 @@ a:hover {
 
 .top-nav a:hover {
   color: var(--gold-dark);
+  text-shadow: 0 0 8px rgba(212,175,55,0.4);
 }
 
 .sloka-banner {
   text-align: center;
-  padding: 1rem 0;
-  width: 100%;
+ padding: 0 1rem 1.5rem;
 }
 
 .sloka-text {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: var(--maroon);
   letter-spacing: 0.1em;
   
@@ -181,14 +209,14 @@ a:hover {
 
 /* Legacy Section */
 .legacy-section {
-  padding: 3rem 0;
+  padding: 4rem 0;
   background-color: var(--bg-darker);
 }
 
 .dual-layout {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 3rem;
   text-align: center;
 }
 
@@ -207,13 +235,13 @@ a:hover {
   max-width: 680px;
   margin-left: auto;
   margin-right: auto;
-  color: #444;
+  
 }
 
 .foundational-sloka {
-  margin-top: 2rem;
-  padding: 2rem 0;
-  border:none;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px dashed var(--gold-tan);
   text-align: center;
 }
 
@@ -226,22 +254,22 @@ a:hover {
 }
 
 .sloka-sanskrit {
-  font-size: 1.8rem;
+  font-size: 2.5rem;
   color: var(--maroon);
-  margin-bottom: 1rem;
-  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1.2px;
 }
 
 .sloka-english {
   font-style: italic;
   color: var(--maroon-light);
-   opacity: 0.6;
+   opacity: 0.8;
   font-size: 1rem;
 }
 
 /* Visionaries Section */
 .visionaries-section {
-  padding: 4rem 0;
+  padding: 5rem 0;
 }
 
 .visionaries-section>.container>h2 {
@@ -270,8 +298,11 @@ a:hover {
 
 .founder-image-wrapper {
   width: 100%;
-  max-width: 500px;
+  max-width: 550px;
   margin: 0 auto;
+  box-shadow: var(--shadow-subtle);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .founder-img {
@@ -279,6 +310,11 @@ a:hover {
   height: auto;
   display: block;
   border-radius: 6px;
+  transition: transform 0.5s ease;
+}
+
+.founder-img:hover {
+  transform: scale(1.03);
 }
 
 .founder-details {
@@ -289,17 +325,23 @@ a:hover {
 }
 
 .profile-card {
-   padding: 24px;
-  border: 1px solid rgba(0,0,0,0.06);
-  border-radius: 10px;
+   padding: 2rem;
+  border: 1px solid rgba(212,175,55,0.3);
+  border-radius: 12px;
   background: #fff;
   text-align: left;
+  box-shadow: var(--shadow-subtle);
+  transition: box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+  box-shadow: 0 8px 25px rgba(74, 0, 0, 0.12);
 }
 
 .profile-card h3 {
   font-size: 1.5rem;
   color: var(--maroon);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
 }
 
 .profile-card h4 {
@@ -312,9 +354,8 @@ a:hover {
 }
 
 .profile-card>p {
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
-  color: #444;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .profile-card ul {
@@ -322,23 +363,20 @@ a:hover {
 }
 
 .profile-card li {
-  margin-bottom: 0.75rem;
+ margin-bottom: 1rem;
   position: relative;
-  padding-left: 1.2rem;
-  font-size: 0.9rem;
-  color: #555;
-  line-height: 1.6;
+  padding-left: 1.5rem;
+  font-size: 0.95rem;
+  color: #444;
 }
 
 .profile-card li::before {
-  content: '·';
+   content: '✦';
   position: absolute;
   left: 0;
   color: var(--gold-dark);
-  font-size: 1.2rem;
-  line-height: 0.8;
-  top: 2px;
-  opacity: 0.6;
+  font-size: 0.9rem;
+  top: 3px;
 }
 
 .profile-card li strong {
@@ -347,10 +385,8 @@ a:hover {
 }
 
 .philosophy-box {
-  margin-top: 3rem;
+ margin-top: 4rem;
   text-align: center;
-  padding: 2rem 0;
-  border-top: 1px solid var(--gold-tan);
 }
 
 .philosophy-box h3 {
@@ -360,20 +396,25 @@ a:hover {
   text-transform: uppercase;
 }
 
-.philosophy-box p {
-  font-size: 1rem;
-  max-width: 700px;
-  margin: 0 auto;
-  font-style: italic;
-  color: #555;
+ .card-effect {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid rgba(212,175,55,0.2);
+  transition: transform 0.3s ease;
+}
+
+.card-effect:hover {
+  transform: translateY(-5px);
 }
 
 /* Footer */
 .main-footer {
   background-color: #f7f3eb;
-  padding: 2rem;
+  padding: 3rem 1rem 2rem;
   text-align: center;
-  border-top: none;
+  border-top: 2px solid var(--gold-tan);
 }
 
 .lotus-icon {
@@ -384,6 +425,7 @@ a:hover {
   width: 40px;
   height: 40px;
   color: var(--maroon-dark);
+  margin-bottom: 1rem;
 }
 
 .contact-info {
@@ -397,31 +439,124 @@ a:hover {
 .copyright {
   font-size: 0.85rem;
   color: #777;
-  padding-top: 1rem;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .founder-details {
-    flex-direction: column;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
+/* --- Founder Slideshow Effects --- */
+.slideshow-container {
+  position: relative;
+  height: 450px; /* Match your image height */
+}
 
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: crossFade 15s infinite; /* 15s total for 3 images */
+}
+
+/* Timing for 3 images: 0-33%, 33-66%, 66-100% */
+.slide:nth-child(1) { animation-delay: 0s; }
+.slide:nth-child(2) { animation-delay: 5s; }
+.slide:nth-child(3) { animation-delay: 10s; }
+
+@keyframes crossFade {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  33% { opacity: 1; }
+  43% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* --- Performance Section Styles --- */
+.performance-section {
+  padding: 5rem 0;
+  background-color: var(--bg-darker);
+}
+
+.performance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.performance-card h3 {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  color: var(--maroon);
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+.gallery-cta {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.btn-gallery {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background-color: var(--maroon-dark);
+  color: white;
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 2px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  border: 1px solid var(--gold);
+}
+
+.btn-gallery:hover {
+  background-color: var(--gold);
+  color: var(--maroon-dark);
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.2rem;
+  } 
+
+  .nataraja-logo { height: 80px; }
+  .title-logo { height: 60px; }
+  
   .top-nav ul {
-    gap: 1.5rem;
-    flex-wrap: wrap;
+    gap: 1.2rem;
   }
 
-  .nataraja-logo {
-    height: 120px;
+  .legacy-text h2, .philosophy-text h2, .visionaries-section > .container > h2 {
+    font-size: 1.5rem;
   }
 
-  .title-logo {
-    height: 80px;
+  .sloka-sanskrit {
+    font-size: 1.4rem;
+  }
+
+  /* Just adjust the padding for mobile here, the shadow stays global */
+  .card-effect {
+    padding: 1.5rem;
+  }
+
+  body::before, body::after {
+    display: none; 
   }
 }
-
 
 
 /* Resources Page Specific Styles */
