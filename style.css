@@ -560,22 +560,22 @@ a:hover {
     font-size: 1.4rem;
   }
 
-  /* Just adjust the padding for mobile here, the shadow stays global */
   .card-effect {
     padding: 1.5rem;
   }
 
- .founder-details {
+  .founder-details {
     grid-template-columns: 1fr;
   }
   
   .profile-card {
     padding: 1.2rem;
   }
+
   .slideshow-container {
     height: 320px;
   }
-  
+
   body::before, body::after {
     display: none; 
   }
